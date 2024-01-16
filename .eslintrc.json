@@ -1,0 +1,4 @@
+{
+  "extends": ["@sarast", "plugin:prettier/recommended"],
+  "ignorePatterns": ["auto-imports.d.ts", "components.d.ts", "typed-router.d.ts"]
+}
