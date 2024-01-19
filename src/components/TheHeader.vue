@@ -8,12 +8,15 @@ const links = [
 </script>
 
 <template>
-  <nav class="border-gray-200 bg-white">
-    <div class="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+  <header class="border-gray-200 bg-white">
+    <div class="container mx-auto flex flex-wrap items-center justify-between gap-4 p-4">
       <RouterLink to="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-        <img src="/logoipsum.svg" class="h-8" alt="Logoipsum" />
+        <picture class="inline-block h-9">
+          <source srcset="/logoipsum.svg" media="(min-width: 450px)" />
+          <img src="/logoipsum-small.svg" alt="Logoipsum" class="h-full" />
+        </picture>
       </RouterLink>
-      <div class="flex space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+      <div class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
         <button
           type="button"
           class="rounded-lg bg-secondary px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-secondary-dark focus:outline-none focus:ring-4 focus:ring-secondary/50"
@@ -55,5 +58,5 @@ const links = [
         </ul>
       </div>
     </div>
-  </nav>
+  </header>
 </template>
