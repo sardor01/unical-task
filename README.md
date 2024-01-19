@@ -1,6 +1,9 @@
 # Tasks
 
----
+## Auth
+
+- [ ] login with existing user;
+- [ ] display user info in header.
 
 ## Products
 
@@ -8,12 +11,7 @@
 - [ ] filter products by category;
 - [ ] single product.
 
-## Auth
-
-- [ ] login with existing user;
-- [ ] display user info in header.
-
-## Cart
+### Cart
 
 - [ ] if user is not logged in, store in temp storage;
 - [ ] if user is logged in, merge save temp storage, and show data from API;
@@ -27,7 +25,7 @@
 - [ ] posts list with pagination and search;
 - [ ] single post.
 
-## Comments
+### Comments
 
 - [ ] show comments related to single post;
 - [ ] if user is not logged in, show existing comments;
