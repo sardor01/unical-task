@@ -8,7 +8,7 @@
     "moduleResolution": "bundler",
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
     },
     "resolveJsonModule": true,
     "allowJs": true,
@@ -20,8 +20,8 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "types": ["unplugin-icons/types/vue"]
+    "types": ["unplugin-icons/types/vue"],
   },
   "include": ["auto-imports.d.ts", "components.d.ts", "env.d.ts", "typed-router.d.ts", "src/**/*", "src/**/*.vue"],
-  "exclude": ["dist", "node_modules"]
+  "exclude": ["dist", "node_modules"],
 }
