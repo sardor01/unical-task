@@ -17,7 +17,7 @@ defineProps<{
 <template>
   <div class="group relative">
     <div
-      class="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:h-80"
+      class="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75 lg:h-80"
     >
       <img
         :src="product.imageSrc"

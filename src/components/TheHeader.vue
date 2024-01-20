@@ -17,12 +17,7 @@ const links = [
         </picture>
       </RouterLink>
       <div class="flex items-center space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
-        <button
-          type="button"
-          class="rounded-lg bg-secondary px-4 py-2 text-center text-sm font-medium text-white transition-colors hover:bg-secondary-dark focus:outline-none focus:ring-4 focus:ring-secondary/50"
-        >
-          Get started
-        </button>
+        <BaseButton variant="secondary">Get started</BaseButton>
         <button
           data-collapse-toggle="navbar-cta"
           type="button"

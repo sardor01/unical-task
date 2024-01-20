@@ -15,6 +15,7 @@
     "cleanup": "rimraf auto-imports.d.ts components.d.ts typed-router.d.ts dist node_modules && pnpm install && pnpm dev"
   },
   "dependencies": {
+    "tailwind-merge": "2.2.0",
     "vue": "3.4.15",
     "vue-router": "4.2.5"
   },
