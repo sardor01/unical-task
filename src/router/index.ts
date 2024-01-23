@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router/auto';
 import { setupLayouts } from 'virtual:vue-layouts';
-import { authStore } from '~/stores/auth';
+import { authState } from '~/stores/auth';
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -22,7 +22,7 @@ const router = createRouter({
 
 router.beforeEach((to) => {
   const metaAuth = to.meta.auth;
-  const loggedIn = authStore.loggedIn;
+  const loggedIn = authState.loggedIn;
 
   if (metaAuth !== undefined && metaAuth !== false) {
     if (loggedIn && metaAuth === 'guest') {

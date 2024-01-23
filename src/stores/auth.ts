@@ -1,13 +1,13 @@
 import { AuthApi, TokenManager } from '~/api/auth';
 import type { LoginRequestBody, User } from '~/api/auth';
 
-interface AuthStore {
+interface AuthState {
   isLoading: boolean;
   currentUser: User | null;
   loggedIn: boolean;
 }
 
-export const authStore = reactive<AuthStore>({
+export const authState = reactive<AuthState>({
   isLoading: false,
   currentUser: null,
   loggedIn: !!TokenManager.getToken(),
@@ -18,15 +18,15 @@ export const setValues = (data: User) => {
     TokenManager.setToken(data.token);
     delete data.token;
   }
-  authStore.currentUser = data;
-  authStore.loggedIn = !!TokenManager.getToken();
+  authState.currentUser = data;
+  authState.loggedIn = !!TokenManager.getToken();
 };
 
 export const login = async (requestBody: LoginRequestBody, onSuccess?: () => void) => {
-  authStore.isLoading = true;
+  authState.isLoading = true;
   try {
     const res = await AuthApi.login(requestBody);
-    if (res.status === 200 && res.data) {
+    if (res.status === 200) {
       setValues(res.data);
       if (typeof onSuccess === 'function') {
         onSuccess();
@@ -35,20 +35,21 @@ export const login = async (requestBody: LoginRequestBody, onSuccess?: () => voi
   } catch (error) {
     console.error(error);
   } finally {
-    authStore.isLoading = false;
+    authState.isLoading = false;
   }
 };
 
 export const logout = () => {
   TokenManager.removeToken();
-  authStore.currentUser = null;
-  authStore.loggedIn = false;
+  authState.currentUser = null;
+  authState.loggedIn = false;
 };
 
 export const fetchCurrentUser = async () => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
   try {
     const res = await AuthApi.getCurrentUser();
-    if (res.status === 200 && res.data) {
+    if (res.status === 200) {
       setValues(res.data);
     }
   } catch (error) {

@@ -27,7 +27,7 @@ const inputValue = computed({
 
 <template>
   <div :class="wrapperClass">
-    <label :for="id" class="mb-1 block text-sm font-medium leading-6 text-gray-900">{{ label }}</label>
+    <label :for="id" class="mb-1 block text-sm font-medium leading-6">{{ label }}</label>
     <input
       v-bind="$attrs"
       :id="id"
@@ -35,7 +35,7 @@ const inputValue = computed({
       :type="type"
       :placeholder="placeholder"
       :required="required"
-      class="block w-full rounded-lg border-0 px-3 py-2 text-sm leading-6 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-light"
+      class="block w-full rounded-lg border-0 px-3 py-2 text-sm leading-6 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-light"
     />
   </div>
 </template>

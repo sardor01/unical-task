@@ -2,8 +2,8 @@
 
 ## Auth
 
-- [ ] login with existing user;
-- [ ] display user info in header.
+- [x] login with existing user;
+- [x] handle "loggedIn" state;
 
 ## Products
 

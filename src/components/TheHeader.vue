@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { authStore, logout } from '~/stores/auth';
+import { authState, logout } from '~/stores/auth';
 
 const route = useRoute();
 const router = useRouter();
@@ -35,7 +35,7 @@ watch(
         </picture>
       </RouterLink>
       <div class="ml-auto flex items-center gap-3 md:order-2 md:ml-0 md:gap-0">
-        <BaseButton v-if="authStore.loggedIn" variant="secondary" @click="handleLogout">Sign out</BaseButton>
+        <BaseButton v-if="authState.loggedIn" variant="secondary" @click="handleLogout">Sign out</BaseButton>
         <RouterLink v-else v-slot="{ href, navigate }" to="/auth/login" custom>
           <BaseLink :href="href" variant="secondary" @click="navigate">Sign in</BaseLink>
         </RouterLink>

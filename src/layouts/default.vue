@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { authStore, fetchCurrentUser } from '~/stores/auth';
+import { authState, fetchCurrentUser } from '~/stores/auth';
 
-if (authStore.loggedIn) {
-  fetchCurrentUser();
+if (authState.loggedIn) {
+  await fetchCurrentUser();
 }
 </script>
 
@@ -10,7 +10,7 @@ if (authStore.loggedIn) {
   <div class="flex min-h-screen flex-col">
     <div class="w-full flex-1">
       <TheHeader />
-      <div class="container mx-auto bg-white px-4">
+      <div class="container mx-auto bg-white px-4 text-gray-900">
         <RouterView />
       </div>
     </div>
