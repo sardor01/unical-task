@@ -1,11 +1,23 @@
 <script setup lang="ts">
+import { authStore, login } from '~/stores/auth';
+
+definePage({
+  meta: {
+    auth: 'guest',
+  },
+});
+
+const router = useRouter();
+
 const formFields = reactive({
-  email: '',
-  password: '',
+  username: 'rshawe2',
+  password: 'OWsTbMUgFc',
 });
 
 const onSubmit = () => {
-  // TODO: login with credentials
+  login(formFields, () => {
+    router.push('/');
+  });
 };
 </script>
 
@@ -18,12 +30,12 @@ const onSubmit = () => {
 
       <form class="space-y-4" @submit.prevent="onSubmit">
         <BaseInput
-          id="email"
-          v-model="formFields.email"
-          label="Email address"
-          type="email"
-          autocomplete="email"
+          id="username"
+          v-model="formFields.username"
+          label="Username"
+          autocomplete="username"
           required
+          :disabled="authStore.isLoading"
         />
         <BaseInput
           id="password"
@@ -32,9 +44,12 @@ const onSubmit = () => {
           type="password"
           autocomplete="current-password"
           required
+          :disabled="authStore.isLoading"
         />
         <div class="pt-2">
-          <BaseButton type="submit" class="w-full font-semibold">Sign in</BaseButton>
+          <BaseButton type="submit" variant="primary" :loading="authStore.isLoading" class="w-full font-semibold">
+            Sign in
+          </BaseButton>
         </div>
       </form>
     </div>

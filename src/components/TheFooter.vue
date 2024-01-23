@@ -1,26 +1,12 @@
 <template>
   <footer class="m-4 rounded-lg bg-white shadow">
-    <div class="container mx-auto w-full p-4 md:py-8">
-      <div class="sm:flex sm:items-center sm:justify-between">
-        <RouterLink to="/" class="mb-4 flex items-center space-x-3 sm:mb-0 rtl:space-x-reverse">
+    <div class="container mx-auto w-full p-4 md:py-6">
+      <div class="text-center">
+        <RouterLink to="/" class="inline-block">
           <img src="/logoipsum.svg" class="h-9" alt="Logoipsum" />
         </RouterLink>
-        <ul class="mb-6 flex flex-wrap items-center text-sm font-medium text-gray-500 sm:mb-0">
-          <li>
-            <a href="#" class="me-4 hover:underline md:me-6">About</a>
-          </li>
-          <li>
-            <a href="#" class="me-4 hover:underline md:me-6">Privacy Policy</a>
-          </li>
-          <li>
-            <a href="#" class="me-4 hover:underline md:me-6">Licensing</a>
-          </li>
-          <li>
-            <a href="#" class="hover:underline">Contact</a>
-          </li>
-        </ul>
       </div>
-      <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
+      <hr class="my-4 border-gray-200 sm:mx-auto lg:my-6" />
       <span class="block text-sm text-gray-500 sm:text-center">
         &copy; {{ new Date().getFullYear() }} Logoipsum. All Rights Reserved.
       </span>

@@ -3,6 +3,10 @@ export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      aria: {
+        'current-page': 'current="page"',
+        loading: 'loading="true"',
+      },
       colors: {
         primary: {
           light: '#1c2a68',
