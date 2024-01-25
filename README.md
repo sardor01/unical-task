@@ -9,7 +9,7 @@
 
 - [x] products list with pagination;
 - [x] filter products by category;
-- [ ] single product.
+- [x] single product.
 
 ### Cart
 

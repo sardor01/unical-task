@@ -20,10 +20,10 @@ defineProps<{
     <div class="mt-4 flex justify-between">
       <div>
         <h3 class="text-balance pr-2 text-sm text-gray-700">
-          <a href="#">
+          <RouterLink :to="`/products/${product.slug}`">
             <span aria-hidden="true" class="absolute inset-0"></span>
             {{ product.title }}
-          </a>
+          </RouterLink>
         </h3>
         <p class="mt-1 text-sm capitalize text-gray-500">{{ product.brand }}</p>
       </div>

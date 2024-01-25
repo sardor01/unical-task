@@ -1,6 +1,7 @@
 import { ProductApi } from '~/api/product';
 import type { ClientPagination } from '~/api/types';
 import type { Product, ProductListParams } from '~/api/product';
+import { toKebabCase } from '~/utils';
 
 interface ProductState {
   isLoading: boolean;
@@ -16,7 +17,7 @@ export const productState = reactive<ProductState>({
   pagination: {
     currentPage: 1,
     pageCount: 1,
-    perPage: 10,
+    perPage: 50,
   },
   product: null,
   categories: [],
@@ -27,7 +28,10 @@ export const fetchProducts = async (params?: ProductListParams) => {
   try {
     const res = await ProductApi.getProducts(params);
     if (res.status === 200) {
-      productState.products = res.data.products;
+      productState.products = res.data.products.map((i) => ({
+        ...i,
+        slug: `${toKebabCase(i.title.replace(/[^a-zA-Z0-9- ]/g, '').trim())}-${i.id}`,
+      }));
       productState.pagination.currentPage = Math.ceil(res.data.skip / res.data.limit) + 1;
       productState.pagination.pageCount = Math.ceil(res.data.total / res.data.limit);
       productState.pagination.perPage = res.data.limit;

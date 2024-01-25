@@ -77,7 +77,7 @@ onMounted(async () => {
         </div>
 
         <div class="flex-1">
-          <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 2xl:grid-cols-5">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             <ProductCard v-for="product in productState.products" :key="product.id" :product="product" />
           </div>
 
