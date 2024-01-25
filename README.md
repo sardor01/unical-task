@@ -7,8 +7,8 @@
 
 ## Products
 
-- [ ] products list with pagination and search;
-- [ ] filter products by category;
+- [x] products list with pagination;
+- [x] filter products by category;
 - [ ] single product.
 
 ### Cart

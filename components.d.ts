@@ -11,6 +11,7 @@ declare module 'vue' {
     BaseInput: typeof import('./src/components/base/BaseInput.vue')['default']
     BaseLink: typeof import('./src/components/base/BaseLink.vue')['default']
     BaseLoader: typeof import('./src/components/base/BaseLoader.vue')['default']
+    BasePagination: typeof import('./src/components/base/BasePagination.vue')['default']
     ProductCard: typeof import('./src/components/ProductCard.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

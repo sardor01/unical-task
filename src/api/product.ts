@@ -1,4 +1,4 @@
-import type { Pagination } from './types';
+import type { ApiPagination } from './types';
 import { httpClient } from './index';
 
 export interface Product {
@@ -25,9 +25,10 @@ export class ProductApi {
   static getProducts(params?: ProductListParams) {
     let url = '/products';
     if (params?.category) {
-      url = `/products/categories/${params.category}`;
+      url = `/products/category/${params.category}`;
+      delete params.category;
     }
-    return httpClient.get<{ products: Product[] } & Pagination>(url, { params });
+    return httpClient.get<{ products: Product[] } & ApiPagination>(url, { params });
   }
 
   static getProduct(id: number) {

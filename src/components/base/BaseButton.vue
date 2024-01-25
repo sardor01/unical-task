@@ -5,7 +5,7 @@ const props = withDefaults(
   defineProps<{
     type?: 'button' | 'submit' | 'reset';
     variant?: 'primary' | 'secondary';
-    class?: string | string[];
+    class?: string | (string | undefined)[];
     disabled?: boolean;
     loading?: boolean;
   }>(),

@@ -1,11 +1,11 @@
 import { ProductApi } from '~/api/product';
-import type { Pagination } from '~/api/types';
+import type { ClientPagination } from '~/api/types';
 import type { Product, ProductListParams } from '~/api/product';
 
 interface ProductState {
   isLoading: boolean;
   products: Product[];
-  pagination: Pagination;
+  pagination: ClientPagination;
   product: Product | null;
   categories: string[];
 }
@@ -14,9 +14,9 @@ export const productState = reactive<ProductState>({
   isLoading: false,
   products: [],
   pagination: {
-    total: 0,
-    skip: 0,
-    limit: 0,
+    currentPage: 1,
+    pageCount: 1,
+    perPage: 10,
   },
   product: null,
   categories: [],
@@ -28,9 +28,9 @@ export const fetchProducts = async (params?: ProductListParams) => {
     const res = await ProductApi.getProducts(params);
     if (res.status === 200) {
       productState.products = res.data.products;
-      productState.pagination.total = res.data.total;
-      productState.pagination.skip = res.data.skip;
-      productState.pagination.limit = res.data.limit;
+      productState.pagination.currentPage = Math.ceil(res.data.skip / res.data.limit) + 1;
+      productState.pagination.pageCount = Math.ceil(res.data.total / res.data.limit);
+      productState.pagination.perPage = res.data.limit;
     }
   } catch (error) {
     console.error(error);
@@ -54,7 +54,6 @@ export const fetchProduct = async (id: number) => {
 };
 
 export const fetchProductCategories = async () => {
-  productState.isLoading = true;
   try {
     const res = await ProductApi.getProductCategories();
     if (res.status === 200) {
@@ -62,7 +61,11 @@ export const fetchProductCategories = async () => {
     }
   } catch (error) {
     console.error(error);
-  } finally {
-    productState.isLoading = false;
   }
+};
+
+export const resetPagination = () => {
+  productState.pagination.currentPage = 1;
+  productState.pagination.pageCount = 1;
+  productState.pagination.perPage = 10;
 };

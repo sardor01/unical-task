@@ -19,7 +19,7 @@ defineProps<{
     </div>
     <div class="mt-4 flex justify-between">
       <div>
-        <h3 class="text-sm text-gray-700">
+        <h3 class="text-balance pr-2 text-sm text-gray-700">
           <a href="#">
             <span aria-hidden="true" class="absolute inset-0"></span>
             {{ product.title }}
