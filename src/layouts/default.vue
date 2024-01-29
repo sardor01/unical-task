@@ -1,5 +1,9 @@
 <script setup lang="ts">
+import { LocalCartManager } from '~/api/cart';
 import { authState, fetchCurrentUser } from '~/stores/auth';
+import { cartState } from '~/stores/cart';
+
+cartState.cartLength = LocalCartManager.getLocalCart().length;
 
 if (authState.loggedIn) {
   await fetchCurrentUser();

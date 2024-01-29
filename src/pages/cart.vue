@@ -13,7 +13,7 @@ onMounted(fetchUserCart);
 
 <template>
   <main class="mx-auto max-w-6xl py-6 lg:py-8">
-    <BaseLoader v-if="cartState.isLoading" class="mx-auto my-6" />
+    <BaseLoader v-if="cartState.getLoading || cartState.updateLoading" class="mx-auto my-6" />
 
     <div v-else-if="cartState.cart">
       <h1 class="mb-4 text-4xl font-bold capitalize">Shopping cart</h1>
@@ -40,8 +40,6 @@ onMounted(fetchUserCart);
             </div>
             <div class="flex items-end justify-between text-sm">
               <p class="text-gray-500">Qty: {{ product.quantity }}</p>
-
-              <BaseButton disabled class="h-auto rounded p-0 text-red-700">Remove</BaseButton>
             </div>
           </div>
         </li>

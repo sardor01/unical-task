@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { fetchProduct, productState } from '~/stores/product';
+import { LocalCartManager } from '~/api/cart';
+import IconMinus from '~icons/mdi/minus';
+import IconPlus from '~icons/mdi/plus';
 import { formatPrice } from '~/utils';
 
 const route = useRoute('/products/[slug]');
@@ -9,6 +12,12 @@ const productId = computed(() => Number(route.params.slug.split('-').pop()));
 const product = toRef(productState, 'product');
 
 const currentImage = ref(0);
+
+const productCount = ref(LocalCartManager.getLocalCart().find((i) => i.id === productId.value)?.quantity || 0);
+
+watch(productCount, (quantity) => {
+  LocalCartManager.setLocalCart({ id: productId.value, quantity });
+});
 
 onMounted(() => fetchProduct(productId.value));
 
@@ -89,7 +98,30 @@ onUnmounted(() => (productState.product = null));
             <div class="text-sm text-gray-400">You save {{ product.discountPercentage }}%</div>
           </div>
 
-          <BaseButton variant="primary" class="h-12 w-full text-base">Add to cart</BaseButton>
+          <div v-if="productCount" class="flex flex-wrap items-center gap-1.5">
+            <BaseButton variant="primary" :disabled="productCount < 0" class="h-10 w-10 p-0" @click="productCount--">
+              <IconMinus class="text-xl" />
+            </BaseButton>
+            <input
+              v-model="productCount"
+              type="number"
+              :min="0"
+              :max="product.stock"
+              class="h-10 w-24 rounded-lg focus:border-primary focus:ring-primary"
+            />
+            <BaseButton
+              variant="primary"
+              :disabled="productCount >= product.stock"
+              class="h-10 w-10 p-0"
+              @click="productCount++"
+            >
+              <IconPlus class="text-xl" />
+            </BaseButton>
+          </div>
+
+          <BaseButton v-else variant="primary" class="h-12 w-full text-base" @click="productCount++">
+            Add to cart
+          </BaseButton>
         </div>
       </div>
     </template>

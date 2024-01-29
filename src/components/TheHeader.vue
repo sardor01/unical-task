@@ -8,7 +8,7 @@ const links = computed(() =>
   [
     { name: 'Home', to: '/' },
     { name: 'Cart', to: '/cart', auth: true },
-    { name: 'Posts', to: '/posts' },
+    { name: 'Posts', to: '/posts', disabled: true },
   ].filter((i) => (i.auth ? authState.loggedIn : true)),
 );
 
@@ -65,12 +65,13 @@ watch(
         <ul
           class="flex flex-col gap-1 rounded-lg border border-gray-100 bg-gray-50 p-3 font-medium md:flex-row md:gap-4 md:border-0 md:bg-white md:p-0"
         >
-          <li v-for="(link, linkIndex) in links" :key="linkIndex">
+          <li v-for="(link, linkIndex) in links" :key="linkIndex" :class="{ 'cursor-not-allowed': link.disabled }">
             <RouterLink v-slot="{ href, navigate, isExactActive }" :to="link.to" custom>
               <BaseLink
                 :href="href"
-                class="bg-primary/10 aria-current-page:bg-primary aria-current-page:text-white"
+                class="bg-primary/10 aria-disabled:pointer-events-none aria-current-page:bg-primary aria-current-page:text-white"
                 :aria-current="isExactActive ? 'page' : undefined"
+                :aria-disabled="link.disabled"
                 @click="navigate"
               >
                 {{ link.name }}

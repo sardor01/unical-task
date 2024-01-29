@@ -16,7 +16,7 @@ const formFields = reactive({
 
 const onSubmit = () => {
   login(formFields, () => {
-    router.push('/');
+    router.push('/cart');
   });
 };
 </script>
