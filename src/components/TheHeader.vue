@@ -4,11 +4,13 @@ import { authState, logout } from '~/stores/auth';
 const route = useRoute();
 const router = useRouter();
 
-const links = [
-  { name: 'Home', to: '/' },
-  { name: 'Cart', to: '/cart' },
-  { name: 'Posts', to: '/posts' },
-];
+const links = computed(() =>
+  [
+    { name: 'Home', to: '/' },
+    { name: 'Cart', to: '/cart', auth: true },
+    { name: 'Posts', to: '/posts' },
+  ].filter((i) => (i.auth ? authState.loggedIn : true)),
+);
 
 const isMenuOpen = ref(false);
 

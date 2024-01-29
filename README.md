@@ -13,8 +13,8 @@
 
 ### Cart
 
+- [x] if user is logged in, merge save temp storage, and show data from API;
 - [ ] if user is not logged in, store in temp storage;
-- [ ] if user is logged in, merge save temp storage, and show data from API;
 - [ ] update cart item (quantity);
 - [ ] delete cart item.
 

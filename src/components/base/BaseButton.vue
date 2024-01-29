@@ -33,7 +33,7 @@ const buttonVariant = computed<string>(() => {
     :type="type"
     :class="
       twMerge(
-        'flex h-10 items-center justify-center rounded-lg px-4 py-2.5 text-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-4 disabled:cursor-not-allowed disabled:opacity-75 aria-loading:cursor-progress',
+        'flex h-10 items-center justify-center rounded-lg px-4 py-2.5 text-center text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring disabled:cursor-not-allowed disabled:opacity-75 aria-loading:cursor-progress',
         buttonVariant,
         className,
       )

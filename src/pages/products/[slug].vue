@@ -16,7 +16,7 @@ onUnmounted(() => (productState.product = null));
 </script>
 
 <template>
-  <main class="mx-auto max-w-7xl space-y-4 py-6 lg:py-8">
+  <main class="mx-auto max-w-6xl space-y-4 py-6 lg:py-8">
     <BaseLoader v-if="productState.isLoading" class="mx-auto my-6" />
 
     <template v-if="product">

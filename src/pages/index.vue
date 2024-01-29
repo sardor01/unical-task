@@ -44,12 +44,12 @@ onMounted(async () => {
 
 <template>
   <main class="py-6 lg:py-8">
-    <div class="space-y-6">
+    <BaseLoader v-if="productState.isLoading" class="mx-auto my-6" />
+
+    <div v-else class="space-y-6">
       <h1 class="text-2xl font-bold tracking-tight md:text-3xl">Products</h1>
 
-      <BaseLoader v-if="productState.isLoading" class="mx-auto my-6" />
-
-      <div v-else class="flex gap-6">
+      <div class="flex gap-6">
         <div class="w-64 flex-shrink-0 space-y-3">
           <h3 class="font-medium">Select category:</h3>
           <ul class="space-y-2">
