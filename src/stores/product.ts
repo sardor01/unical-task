@@ -17,7 +17,7 @@ export const productState = reactive<ProductState>({
   pagination: {
     currentPage: 1,
     pageCount: 1,
-    perPage: 50,
+    perPage: 10,
   },
   product: null,
   categories: [],
@@ -49,6 +49,7 @@ export const fetchProduct = async (id: number) => {
     const res = await ProductApi.getProduct(id);
     if (res.status === 200) {
       productState.product = res.data;
+      productState.product.slug = `${toKebabCase(res.data.title.replace(/[^a-zA-Z0-9- ]/g, '').trim())}-${res.data.id}`;
     }
   } catch (error) {
     console.error(error);

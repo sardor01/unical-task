@@ -6,6 +6,7 @@ import VueRouter from 'unplugin-vue-router/vite';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import Icons from 'unplugin-icons/vite';
+import { FileSystemIconLoader } from 'unplugin-icons/loaders';
 import VueLayouts from 'unplugin-vue-layouts';
 
 export default defineConfig({
@@ -23,7 +24,12 @@ export default defineConfig({
       vueTemplate: true,
     }),
     Components(),
-    Icons({ compiler: 'vue3' }),
+    Icons({
+      compiler: 'vue3',
+      customCollections: {
+        custom: FileSystemIconLoader('./src/assets/icons'),
+      },
+    }),
     VueLayouts(),
   ],
 });

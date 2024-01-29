@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Product } from '~/api/product';
+import { formatPrice } from '~/utils';
 
 defineProps<{
   product: Product;
@@ -9,7 +10,7 @@ defineProps<{
 <template>
   <div class="group relative">
     <div
-      class="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-lg bg-gray-200 group-hover:opacity-75 lg:h-80"
+      class="aspect-h-1 aspect-w-1 lg:aspect-none w-full overflow-hidden rounded-lg border border-gray-100 bg-gray-200 group-hover:opacity-75 lg:h-80"
     >
       <img
         :src="product.thumbnail"
@@ -27,7 +28,7 @@ defineProps<{
         </h3>
         <p class="mt-1 text-sm capitalize text-gray-500">{{ product.brand }}</p>
       </div>
-      <p class="text-sm font-medium">${{ product.price }}</p>
+      <p class="text-sm font-medium">${{ formatPrice(product.price) }}</p>
     </div>
   </div>
 </template>
